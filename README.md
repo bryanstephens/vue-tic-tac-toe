@@ -1,6 +1,6 @@
 # tic-tac-toe
 
-> A simple tic-tac-toe game to learn vue.
+> A simple tic-tac-toe game to learn Vue. A live demo can be found [here|bryanstephens.github.io/vue-tic-tac-toe].
 
 ## Build Setup
 
