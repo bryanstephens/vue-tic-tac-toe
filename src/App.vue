@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <GameBoard></GameBoard>
+    <game></game>
   </div>
 </template>
 
 <script>
-import GameBoard from './components/Game-Board'
+import Game from './components/game'
 
 export default {
   name: 'app',
   components: {
-    GameBoard
+    'game': Game
   }
 }
 </script>

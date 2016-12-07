@@ -1,16 +1,10 @@
 <template>
-  <div class="game">
-    <span>Player turn: {{player}}</span>
-    <div class="game-board">
-      <template v-for="(selectionRow, rowKey, rowIndex) in selections">
-        <div v-for="(selectionColumn, colKey, colIndex) in selectionRow" @click="playerSelect" class="grid-square" v-bind:data-x="rowKey" v-bind:data-y="colKey">
-          {{selections[rowKey][colKey]}}
-        </div>
-      </template>
-      <!-- <div @click="playerSelect" class="grid-square" data-grid-position="br">
-        {{selections['br']}}
-      </div> -->
-    </div>
+  <div class="game-board">
+    <template v-for="(moveRow, rowKey, rowIndex) in moves">
+      <div v-for="(moveCol, colKey, colIndex) in moveRow" @click="playerSelect" class="grid-square" v-bind:data-x="colKey" v-bind:data-y="rowKey">
+        {{moves[rowKey][colKey]}}
+      </div>
+    </template>
   </div>
 </template>
 
@@ -39,47 +33,26 @@
 export default {
   methods: {
     playerSelect (event) {
-      var x = event.target.dataset.x
-      var y = event.target.dataset.y
-      var successfulMove = this.setMove(x, y, this.player)
-      if (successfulMove) {
-        if (this.player === 1) {
-          this.player = 2
-        } else {
-          this.player = 1
-        }
-      }
-    },
-    createBoardSelections (size) {
-      var arr = new Array(size)
-      for (var i = 0; i < size; i++) {
-        arr[i] = new Array(size)
-      }
-      return arr
-    },
-    setMove (x, y, player) {
-      if (!this.selections[x][y]) {
-        this.selections[x][y] = player
-        return true
-      } else {
-        return false
+      var selectedGridSquare = event.target
+      if (!selectedGridSquare.classList.contains('chosen')) {
+        selectedGridSquare.classList.add('chosen')
+        var x = event.target.dataset.x
+        var y = event.target.dataset.y
+        this.$emit('chosen', {'x': x, 'y': y})
       }
     }
-
   },
   props: {
-    initialSize: {
+    player: {
       type: Number,
-      default: 3
+      required: true
+    },
+    moves: {
+      type: Array
     }
   },
   data () {
-    return {
-      player: 1,
-      size: this.initialSize,
-      selections: this.createBoardSelections(this.initialSize)
-    }
+    return {}
   }
 }
-
 </script>
