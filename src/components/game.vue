@@ -1,7 +1,7 @@
 <template>
   <div class="game-container">
-    <game-board v-bind:moves="moves" v-bind:player="player" v-on:chosen="processPlayerSelection"></game-board>
-    <score-board v-bind:player="player" v-bind:wins="winsMap"></score-board>
+    <game-board v-bind:moves="moves" v-bind:player="player" v-on:chosen="processPlayerSelection" v-bind:gameOver="gameOver"></game-board>
+    <score-board v-bind:player="player" v-bind:wins="winsMap" v-on:resetGame="resetGame" v-on:resetScore="resetScore"></score-board>
   </div>
 </template>
 
@@ -23,17 +23,20 @@ export default {
     'score-board': ScoreBoard
   },
   data () {
-    return {
-      player: 'X',
-      winsMap: {
-        1: 0,
-        2: 0
-      },
-      moves: this.createBoardSelections(3)
-    }
+    return this.getDefaultData()
   },
   methods: {
-    createBoardSelections (size) {
+    getDefaultData () {
+      return {
+        player: 'X',
+        winsMap: {
+          'X': 0,
+          'O': 0
+        },
+        moves: this.createEmptyMovesArray(3)
+      }
+    },
+    createEmptyMovesArray (size) {
       var arr = new Array(size)
       for (var i = 0; i < size; i++) {
         arr[i] = new Array(size)
@@ -47,6 +50,18 @@ export default {
       } else {
         this.player = 'X'
       }
+    },
+    resetGame () {
+      var resetScoreData = this.getDefaultData()
+      resetScoreData.winsMap = this.$data.winsMap
+      Object.assign(this.$data, resetScoreData)
+    },
+    resetScore () {
+      var resetScoreData = this.getDefaultData()
+      resetScoreData.player = this.$data.player
+      resetScoreData.gameOver = this.$data.gameOver
+      resetScoreData.moves = this.$data.moves
+      Object.assign(this.$data, resetScoreData)
     }
   }
 }

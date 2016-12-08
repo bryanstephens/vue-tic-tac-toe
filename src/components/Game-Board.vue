@@ -33,22 +33,25 @@
 export default {
   methods: {
     playerSelect (event) {
-      var selectedGridSquare = event.target
-      if (!selectedGridSquare.classList.contains('chosen')) {
-        selectedGridSquare.classList.add('chosen')
-        var x = event.target.dataset.x
-        var y = event.target.dataset.y
+      var x = event.target.dataset.x
+      var y = event.target.dataset.y
+      if (!this.moves[y][x]) {
         this.$emit('chosen', {'x': x, 'y': y})
       }
     }
   },
   props: {
     player: {
-      type: Number,
+      type: String,
+      required: true
+    },
+    gameOver: {
+      type: Boolean,
       required: true
     },
     moves: {
-      type: Array
+      type: Array,
+      required: true
     }
   },
   data () {
