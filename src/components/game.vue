@@ -1,6 +1,6 @@
 <template>
   <div class="game-container">
-    <game-board v-bind:moves="moves" v-bind:player="player" v-on:chosen="processPlayerSelection" v-bind:gameOver="gameOver"></game-board>
+    <game-board v-bind:moves="moves" v-bind:player="player" v-on:chosen="processPlayerSelection"></game-board>
     <score-board v-bind:player="player" v-bind:wins="winsMap" v-on:resetGame="resetGame" v-on:resetScore="resetScore"></score-board>
   </div>
 </template>
@@ -59,7 +59,6 @@ export default {
     resetScore () {
       var resetScoreData = this.getDefaultData()
       resetScoreData.player = this.$data.player
-      resetScoreData.gameOver = this.$data.gameOver
       resetScoreData.moves = this.$data.moves
       Object.assign(this.$data, resetScoreData)
     }
