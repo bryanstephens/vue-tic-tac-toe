@@ -27,4 +27,4 @@ npm test
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 
-[live demo]: bryanstephens.github.io/vue-tic-tac-toe
+[live demo]: http://bryanstephens.github.io/vue-tic-tac-toe
