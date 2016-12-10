@@ -1,6 +1,6 @@
 # tic-tac-toe
 
-> A simple tic-tac-toe game to learn Vue. A live demo can be found [here|bryanstephens.github.io/vue-tic-tac-toe].
+> A simple tic-tac-toe game to learn Vue. Here is a [live demo]. 
 
 ## Build Setup
 
@@ -25,3 +25,6 @@ npm test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+[live demo]: bryanstephens.github.io/vue-tic-tac-toe
