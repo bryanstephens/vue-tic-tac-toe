@@ -1,6 +1,8 @@
 tic-tac-toe
 ===========
 
+[![CircleCI]]
+
 > A simple tic-tac-toe game to learn Vue. Here is a [live demo].
 
 Build Setup
@@ -39,6 +41,8 @@ yarn test
 For detailed explanation on how things work, checkout the [guide] and
 [docs for vue-loader].
 
+  [CircleCI]: https://circleci.com/gh/bryanstephens/vue-tic-tac-toe.svg?style=svg
+  [![CircleCI]]: https://circleci.com/gh/bryanstephens/vue-tic-tac-toe
   [live demo]: http://bryanstephens.github.io/vue-tic-tac-toe
   [guide]: http://vuejs-templates.github.io/webpack/
   [docs for vue-loader]: http://vuejs.github.io/vue-loader
