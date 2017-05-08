@@ -57,6 +57,7 @@ module.exports = function (config) {
     frameworks: ['mocha', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
+    failOnEmptyTestSuite: false,
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },
