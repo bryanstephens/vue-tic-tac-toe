@@ -1,7 +1,7 @@
 tic-tac-toe
 ===========
 
-[![CircleCI](https://circleci.com/gh/bryanstephens/vue-tic-tac-toe.svg?style=svg)](https://circleci.com/gh/bryanstephens/vue-tic-tac-toe)
+[![CircleCI](https://circleci.com/gh/bryanstephens/vue-tic-tac-toe.svg?style=shield)](https://circleci.com/gh/bryanstephens/vue-tic-tac-toe)
 
 > A simple tic-tac-toe game to learn Vue. Here is a [live demo].
 
