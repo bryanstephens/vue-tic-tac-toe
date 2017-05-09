@@ -18,3 +18,8 @@ test:
   override:
     - yarn test
 
+deployment:
+  demo:
+    branch: master
+    commands:
+      - yarn deploy
