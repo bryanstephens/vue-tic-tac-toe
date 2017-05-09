@@ -8,6 +8,8 @@ machine:
 
 dependencies:
   override:
+    - circleci/get-latest-chrome.sh
+    - yarn global add npm
     - yarn
   cache_directories:
     - ~/.cache/yarn
@@ -16,3 +18,10 @@ test:
   override:
     - yarn test
 
+deployment:
+  demo:
+    branch: master
+    commands:
+      - git config --global user.name "CircleCI"
+      - git config --global user.email "bryan.craig.stephens@gmail.com"
+      - yarn deploy
