@@ -22,6 +22,7 @@ deployment:
   demo:
     branch: master
     commands:
+      - yarn build
       - git config --global user.name "CircleCI"
       - git config --global user.email "bryan.craig.stephens@gmail.com"
       - yarn deploy
