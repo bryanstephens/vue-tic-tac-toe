@@ -1,9 +1,9 @@
 <template>
-  <table cellspacing="0">
-    <tr v-for="(moveRow, rowKey, rowIndex) in moves">
-      <td v-for="(moveCol, colKey, colIndex) in moveRow" @click="playerSelect" v-bind:data-x="colKey" v-bind:data-y="rowKey">{{moves[rowKey][colKey]}}</td>
-    </tr>
-  </table>
+<table cellspacing="0">
+  <tr v-for="(moveRow, rowKey, rowIndex) in moves">
+    <td v-for="(moveCol, colKey, colIndex) in moveRow" @click="playerSelect" v-bind:data-x="colKey" v-bind:data-y="rowKey">{{moves[colKey][rowKey]}}</td>
+  </tr>
+</table>
 </template>
 
 <style>
@@ -11,6 +11,7 @@ table {
   width: 500px;
   height: 500px;
 }
+
 td {
   border: 3px solid black;
   margin: 0px;
@@ -40,29 +41,25 @@ tr:last-child td {
 </style>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters({
+      moves: 'selectedMoves'
+    })
+  },
   methods: {
-    playerSelect (event) {
-      console.log(event.target)
+    playerSelect: function (event) {
       var x = event.target.dataset.x
       var y = event.target.dataset.y
-      if (!this.moves[y][x]) {
-        this.$emit('chosen', {'x': x, 'y': y})
-      }
+      this.$store.dispatch('makeMove', {
+        'x': x,
+        'y': y
+      })
     }
-  },
-  props: {
-    player: {
-      type: String,
-      required: true
-    },
-    moves: {
-      type: Array,
-      required: true
-    }
-  },
-  data () {
-    return {}
   }
 }
 </script>
