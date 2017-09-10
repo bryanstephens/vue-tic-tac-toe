@@ -1,7 +1,7 @@
 <template>
 <table cellspacing="0">
   <tr v-for="(moveRow, rowKey, rowIndex) in moves">
-    <td v-for="(moveCol, colKey, colIndex) in moveRow" @click="playerSelect" v-bind:data-x="colKey" v-bind:data-y="rowKey">{{moves[colKey][rowKey]}}</td>
+    <td v-for="(moveCol, colKey, colIndex) in moveRow" @click="playerSelect(colKey, rowKey)">{{moves[colKey][rowKey]}}</td>
   </tr>
 </table>
 </template>
@@ -52,9 +52,7 @@ export default {
     })
   },
   methods: {
-    playerSelect: function (event) {
-      var x = event.target.dataset.x
-      var y = event.target.dataset.y
+    playerSelect: function (x, y) {
       this.$store.dispatch('makeMove', {
         'x': x,
         'y': y
